@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import MaxWidthWrapper from "./components/MaxWidthWrapper";
+import { Yanone_Kaffeesatz } from "next/font/google";
+import { Montserrat } from "next/font/google";
+
+const montserrat = Montserrat({ subsets: ["cyrillic", "latin"] });
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,10 +30,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${montserrat.className} antialiased`}>
+        <main>
+          <MaxWidthWrapper>{children}</MaxWidthWrapper>
+        </main>
       </body>
     </html>
   );
